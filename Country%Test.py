@@ -27,5 +27,4 @@ if upload_zip is not None:
 else:
     st.info("Please upload a zip file containing the shapefile.")
 
-get_ipython().run_line_magic('save', 'Country%Test.py 1-20')
 st.write("This is a simple Streamlit app that displays country-level data on a map.")
