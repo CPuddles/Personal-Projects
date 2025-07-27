@@ -12,13 +12,13 @@ import geopandas as gpd
 
 st.title('Country Level Data')
 
-upload_zip = st.file_uploader(r"C:\Users\ChrisPuduski\ne_110m_admin_0_countries.zip", type=["zip"])
+upload_zip = st.file_uploader(r"C:\Users\ChrisPuduski\ne_110m_admin_1_states_provinces.zip", type=["zip"])
 
 if upload_zip is not None:
     with tempfile.TemporaryDirectory() as tmpdirname:
         with zipfile.ZipFile(upload_zip, 'r') as zip_ref:
             zip_ref.extractall(tmpdirname)
-        shapefile_path = os.path.join(tmpdirname, "ne_110m_admin_0_countries.shp")
+        shapefile_path = os.path.join(tmpdirname, "ne_110m_admin_1_states_provinces.shp")
         world = gpd.read_file(shapefile_path)
         fig = px.choropleth(world, geojson=world.geometry, locations=world.index, color=world['CONTINENT'], hover_name=world['NAME'], projection="natural earth")
 
